@@ -25,30 +25,17 @@ android {
     }
 
     buildTypes {
-        getByName(BuildTypes.RELEASE) {
+        BuildCreator.Release(project).create(this).apply {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            isMinifyEnabled = Build.Release.isMinifyEnabled
-            enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
-            isDebuggable = Build.Release.isDebuggable
             signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
         }
-        getByName(BuildTypes.DEBUG) {
-            isMinifyEnabled = Build.Debug.isMinifyEnabled
-            enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
-            isDebuggable = Build.Debug.isDebuggable
-            versionNameSuffix = Build.Debug.versionNameSuffix
-            applicationIdSuffix = Build.Debug.applicationIdSuffix
+        BuildCreator.Debug(project).create(this).apply {
             signingConfig = signingConfigs.getByName(SigningTypes.DEBUG)
         }
-        create(BuildTypes.RELEASE_EXTERNAL_QA) {
-            isMinifyEnabled = Build.ReleaseExternalQa.isMinifyEnabled
-            enableUnitTestCoverage = Build.ReleaseExternalQa.enableUnitTestCoverage
-            isDebuggable = Build.ReleaseExternalQa.isDebuggable
-            versionNameSuffix = Build.ReleaseExternalQa.versionNameSuffix
-            applicationIdSuffix = Build.ReleaseExternalQa.applicationIdSuffix
+        BuildCreator.ReleaseExternalQa(project).create(this).apply {
             signingConfig = signingConfigs.getByName(SigningTypes.RELEASE_EXTERNAL_QA)
         }
     }
