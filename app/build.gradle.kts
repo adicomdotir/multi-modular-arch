@@ -18,6 +18,12 @@ android {
         testInstrumentationRunner = TestBuildConfig.TEST_INSTRUMENTATION_RUNNER
     }
 
+    signingConfigs {
+        BuildSigning.Release(project).create(this)
+        BuildSigning.ReleaseExternalQa(project).create(this)
+        BuildSigning.Debug(project).create(this)
+    }
+
     buildTypes {
         getByName(BuildTypes.RELEASE) {
             proguardFiles(
@@ -27,6 +33,7 @@ android {
             isMinifyEnabled = Build.Release.isMinifyEnabled
             enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
             isDebuggable = Build.Release.isDebuggable
+            signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
         }
         getByName(BuildTypes.DEBUG) {
             isMinifyEnabled = Build.Debug.isMinifyEnabled
@@ -34,6 +41,7 @@ android {
             isDebuggable = Build.Debug.isDebuggable
             versionNameSuffix = Build.Debug.versionNameSuffix
             applicationIdSuffix = Build.Debug.applicationIdSuffix
+            signingConfig = signingConfigs.getByName(SigningTypes.DEBUG)
         }
         create(BuildTypes.RELEASE_EXTERNAL_QA) {
             isMinifyEnabled = Build.ReleaseExternalQa.isMinifyEnabled
@@ -41,6 +49,7 @@ android {
             isDebuggable = Build.ReleaseExternalQa.isDebuggable
             versionNameSuffix = Build.ReleaseExternalQa.versionNameSuffix
             applicationIdSuffix = Build.ReleaseExternalQa.applicationIdSuffix
+            signingConfig = signingConfigs.getByName(SigningTypes.RELEASE_EXTERNAL_QA)
         }
     }
     flavorDimensions.add(BuildDimensions.APP)
