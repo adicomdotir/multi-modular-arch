@@ -26,10 +26,10 @@ android {
 
     buildTypes {
         BuildCreator.Release(project).create(this).apply {
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
             signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
         }
         BuildCreator.Debug(project).create(this).apply {
