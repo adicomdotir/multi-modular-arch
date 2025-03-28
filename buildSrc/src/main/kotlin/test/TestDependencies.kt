@@ -1,3 +1,5 @@
+package test
+
 import deps.DependenciesVersions
 
 object TestDependencies {

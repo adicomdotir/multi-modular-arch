@@ -3,10 +3,11 @@ import build.BuildCreator
 import build.BuildDimensions
 import deps.Dependencies
 import flavors.BuildFlavor
-import plugs.BuildPlugins
 import release.ReleaseConfig
 import signing.BuildSigning
 import signing.SigningTypes
+import test.TestBuildConfig
+import test.TestDependencies
 
 plugins {
     id(plugs.BuildPlugins.ANDROID_APPLICATION)
