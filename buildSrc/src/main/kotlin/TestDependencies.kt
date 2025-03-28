@@ -1,3 +1,5 @@
+import deps.DependenciesVersions
+
 object TestDependencies {
     const val ANDROIDX_JUNIT = "androidx.test.ext:junit:${DependenciesVersions.JUNIT_VERSION}"
     const val ANDROIDX_ESPRESSO_CORE =

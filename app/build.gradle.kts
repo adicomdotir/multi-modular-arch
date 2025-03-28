@@ -1,6 +1,16 @@
+import build.BuildConfig
+import build.BuildCreator
+import build.BuildDimensions
+import deps.Dependencies
+import flavors.BuildFlavor
+import plugs.BuildPlugins
+import release.ReleaseConfig
+import signing.BuildSigning
+import signing.SigningTypes
+
 plugins {
-    id(BuildPlugins.ANDROID_APPLICATION)
-    id(BuildPlugins.KOTLIN_ANDROID)
+    id(plugs.BuildPlugins.ANDROID_APPLICATION)
+    id(plugs.BuildPlugins.KOTLIN_ANDROID)
     alias(libs.plugins.kotlin.compose)
 }
 
@@ -16,6 +26,9 @@ android {
         versionName = ReleaseConfig.VERSION_NAME
 
         testInstrumentationRunner = TestBuildConfig.TEST_INSTRUMENTATION_RUNNER
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     signingConfigs {
@@ -26,10 +39,10 @@ android {
 
     buildTypes {
         BuildCreator.Release(project).create(this).apply {
-//            proguardFiles(
-//                getDefaultProguardFile("proguard-android-optimize.txt"),
-//                "proguard-rules.pro"
-//            )
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
         }
         BuildCreator.Debug(project).create(this).apply {
