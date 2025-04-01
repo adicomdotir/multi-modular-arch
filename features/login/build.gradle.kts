@@ -1,6 +1,14 @@
+import deps.androidx
+import deps.hilt
+import deps.room
+import deps.testDebugDeps
+import deps.testDeps
+import deps.testImplDeps
+
 plugins {
-    id("org.jetbrains.kotlin.android")
-    id("com.android.library")
+    id(plugs.BuildPlugins.ANDROID_LIBRARY)
+    id(plugs.BuildPlugins.KOTLIN_ANDROID)
+    kotlin(plugs.BuildPlugins.KAPT)
 }
 
 android {
@@ -34,10 +42,10 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    androidx()
+//    hilt()
+    room()
+    testDeps()
+    testImplDeps()
+    testDebugDeps()
 }
