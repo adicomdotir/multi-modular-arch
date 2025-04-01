@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Mutli Modular Arch"
 include(":app")
- 
+include(":features:login")
+include(":features:home")
