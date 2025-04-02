@@ -21,7 +21,7 @@ plugins {
     id(plugs.BuildPlugins.KOTLIN_ANDROID)
     alias(libs.plugins.kotlin.compose)
     id(plugs.BuildPlugins.ANDROID)
-    kotlin(plugs.BuildPlugins.KAPT)
+    id(plugs.BuildPlugins.KAPT)
 }
 
 android {
@@ -88,7 +88,7 @@ dependencies {
 
     loginModule()
     androidx()
-//    hilt()
+    hilt()
     room()
     okHttp()
     retrofit()

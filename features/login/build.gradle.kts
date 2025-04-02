@@ -4,48 +4,29 @@ import deps.room
 import deps.testDebugDeps
 import deps.testDeps
 import deps.testImplDeps
+import plugs.SharedLibraryGradlePlugin
 
 plugins {
+    println("login : 1")
     id(plugs.BuildPlugins.ANDROID_LIBRARY)
-    id(plugs.BuildPlugins.KOTLIN_ANDROID)
-    kotlin(plugs.BuildPlugins.KAPT)
+    println("login : 2")
 }
 
+apply<SharedLibraryGradlePlugin>()
+
 android {
+    println("login : 3")
     namespace = "ir.adicom.login"
-    compileSdk = 35
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+    println("login : 4")
 }
 
 dependencies {
-
+    println("login : 5")
     androidx()
-//    hilt()
+    hilt()
     room()
     testDeps()
     testImplDeps()
     testDebugDeps()
+    println("login : 6")
 }
