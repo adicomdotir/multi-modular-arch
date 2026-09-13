@@ -13,13 +13,9 @@ import test.TestBuildConfig
 class SharedLibraryGradlePlugin : Plugin<Project> {
     override fun apply(project: Project) {
         println(project.project)
-        println("SharedClass : 1")
         project.addPluginConfigurations()
-        println("SharedClass : 2")
         project.addAndroidConfigurations()
-        println("SharedClass : 3")
         project.applyKotlinOptions()
-        println("SharedClass : 4")
     }
 
     private fun Project.addPluginConfigurations() {
